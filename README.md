@@ -2,6 +2,12 @@
 
 Modified from https://github.com/Thiasap/ClipboardFilter
 
+# Status
+
+Support app:
+
+* Twitter
+
 ## License
 
 [![](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/licenses/agpl-3.0.txt)
