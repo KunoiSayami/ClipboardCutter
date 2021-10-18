@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bit747.clipboardfilter">
+    package="com.kunoisayami.clipboardfilter">
 
     <application
         android:allowBackup="true"
@@ -11,17 +11,10 @@
         android:theme="@style/myTheme">
         <meta-data
             android:name="xposeddescription"
-            android:value="剪贴板过滤" />
+            android:value="Cut tracking clipboard parameters" />
         <meta-data
             android:name="xposedminversion"
             android:value="72" />
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

@@ -1,3 +1,2 @@
-rootProject.name = "ClipboardFilter"
+rootProject.name = "ClipboardShareParamsCuter"
 include ':app'
-include ':clipboardfilter-lite'

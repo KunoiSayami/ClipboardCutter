@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.bit747.clipboardfilter"
+        applicationId "com.github.kunoisayami.clipboard_share_params_cutter"
         minSdkVersion 24
         targetSdkVersion 30
         versionCode 1

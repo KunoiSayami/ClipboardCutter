@@ -1,28 +1,15 @@
-# ClipboardFilter
-剪贴板写入过滤的xposed插件，基于正则表达式过滤剪贴板写入内容。默认hook所有app，lsposed可以选择作用域来限制。
+# Tracking parameters cutter
 
-部分源码来源于 https://github.com/congshengwu/Xposed_Clipboard 
- 
-## 用法：
-使用`Pattern.matches(pattern, content);`循环判断规则。  
-保存规则前可以使用app自带的测试工具来测试规则是否生效。 
-自带了几条规则。
-### v1.3
+Modified from https://github.com/Thiasap/ClipboardFilter
 
-不再需要存储权限，写好规则保存正常使用即可，如果实在不知道怎么写，可以上酷安问[今天内存降价了吗](http://www.coolapk.com/u/855305)
+## License
 
- --- 
-### 以下是旧的日志，可以不看 
-### v1.2及以前 
-### 1，被hook有存储权限 
-直接修改`/sdcard/Android/hooker/clipboardfilter.conf`，一行一条规则   
-使用`Pattern.matches(pattern, content);`循环判断文件中的规则。  
-保存规则前可以使用app自带的测试工具来测试规则是否生效。  
-**使用存储重定向的用户需要特别注意，被重定向的app可能读取不倒配置文件！**  
+[![](https://www.gnu.org/graphics/agplv3-155x51.png)](https://www.gnu.org/licenses/agpl-3.0.txt)
 
-### 2，没存储权限
-#### 2.1 改源码
-修改`com.bit747.clipboardfilter.xposedInit`，规则写到CUSTOM_RULE里，然后重新编译，多条规则需要用`\n`隔开  
-#### 2.2 反编译
-跟上面差不多，反编译找到`com.bit747.clipboardfilter.xposedInit`，找到CUSTOM_RULE上面的`""`，规则写里头，多条规则需要用`\n`隔开，然后重新编译，不同版本位置可能不同  
-![](./res/微信图片_20210811095518.png)
+Copyright (C) 2021 KunoiSayami
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License along with this program. If not, see <https://www.gnu.org/licenses/>.
