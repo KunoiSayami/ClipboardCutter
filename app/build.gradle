@@ -5,7 +5,7 @@ plugins {
 apply from: 'properties.gradle'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion "30.0.3"
 
     signingConfigs {
@@ -20,9 +20,9 @@ android {
     defaultConfig {
         applicationId "com.github.kunoisayami.clipboard_share_params_cutter"
         minSdkVersion 28
-        targetSdkVersion 30
-        versionCode 2
-        versionName "1.1.0"
+        targetSdkVersion 31
+        versionCode 3
+        versionName "1.1.1"
         signingConfig signingConfigs.config
     }
 

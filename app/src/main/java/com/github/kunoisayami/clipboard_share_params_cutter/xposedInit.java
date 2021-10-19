@@ -45,7 +45,7 @@ public class xposedInit implements IXposedHookLoadPackage {
                                 ClipData tmpData = ClipData.newPlainText("",
                                         new StringBuilder("https://mp.weixin.qq.com/s?").append(final_args));
                                 param.args[0] = tmpData;
-                            } else {
+                            } else if (clipStr.startsWith("https://twitter.com")) {
                                 XposedBridge.log("Catch share link!");
                                 ClipData tmpData = ClipData.newPlainText("", clipStr.split("\\?")[0]);
                                 param.args[0] = tmpData;
