@@ -1,2 +1,4 @@
 build/
 properties.gradle
+release/
+debug/

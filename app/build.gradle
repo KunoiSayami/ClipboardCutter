@@ -21,8 +21,8 @@ android {
         applicationId "com.github.kunoisayami.clipboard_share_params_cutter"
         minSdkVersion 28
         targetSdkVersion 31
-        versionCode 3
-        versionName "1.1.1"
+        versionCode 4
+        versionName "1.2.0"
         signingConfig signingConfigs.config
     }
 
