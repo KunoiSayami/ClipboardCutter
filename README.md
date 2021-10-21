@@ -7,6 +7,8 @@ Modified from https://github.com/Thiasap/ClipboardFilter
 Support app:
 
 * Twitter
+* Wechat (long share link article)
+* QQ (bilibili share link)
 
 ## License
 
