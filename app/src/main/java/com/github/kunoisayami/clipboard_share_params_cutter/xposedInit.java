@@ -53,7 +53,9 @@ public class xposedInit implements IXposedHookLoadPackage {
                         } else if (clipStr.startsWith("{") && clipStr.endsWith("}") &&
                                 clipStr.contains("com.tencent.structmsg") &&
                                 clipStr.contains("b23.tv")) {
-                            String extract_url = clipStr.split("jumpUrl\":\"")[1].split("\\?")[0]
+                            String extract_url = clipStr.split("jumpUrl\":\"")[1];
+                            extract_url = extract_url
+                                    .split(extract_url.contains("?") ? "\\?" : "\"")[0]
                                     .replace("\\", "")
                                     .replace(".tv/", ".wtf/");
                             XposedBridge.log("Extract bilibili video link: " + extract_url);
