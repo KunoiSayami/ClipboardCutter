@@ -20,6 +20,25 @@ public class xposedInit implements IXposedHookLoadPackage {
                     "sn",
                     "chksm"));
 
+    private static final ArrayList<String> mp_qq_share_arguments = new ArrayList<>(
+            Arrays.asList("sig",
+                    "articl_id",
+                    "time"));
+
+    public static ClipData cutArticle(String originUrl, ArrayList<String> args, String url_base) {
+        ArrayList<String> arguments = new ArrayList<>();
+        for (String arg : originUrl.split("\\?")[1].split("&")) {
+            String[] group = arg.split("=");
+            if (!args.contains(group[0])) {
+                continue;
+            }
+            arguments.add(arg);
+        }
+        String final_args = String.join("&", arguments);
+        return ClipData.newPlainText("",
+                new StringBuilder(url_base).append(final_args));
+    }
+
     @Override
     public void handleLoadPackage(final XC_LoadPackage.LoadPackageParam lpparam) throws Throwable {
         XposedHelpers.findAndHookMethod(ClipboardManager.class, "setPrimaryClip",
@@ -32,23 +51,14 @@ public class xposedInit implements IXposedHookLoadPackage {
                         if (clipStr.contains("?") && clipStr.startsWith("https://")) {
                             if (clipStr.startsWith("https://mp.weixin.qq.com/s?")) {
                                 XposedBridge.log("Catch wechat article long share link!");
-                                //HashMap<String, String> arguments = new HashMap<>();
-                                ArrayList<String> arguments = new ArrayList<>();
-                                for (String arg : clipStr.split("\\?")[1].split("&")) {
-                                    String[] group = arg.split("=");
-                                    if (!wechat_share_arguments.contains(group[0])) {
-                                        continue;
-                                    }
-                                    arguments.add(arg);
-                                }
-                                String final_args = String.join("&", arguments);
-                                ClipData tmpData = ClipData.newPlainText("",
-                                        new StringBuilder("https://mp.weixin.qq.com/s?").append(final_args));
-                                param.args[0] = tmpData;
+                                param.args[0] = cutArticle(clipStr, wechat_share_arguments, "https://mp.weixin.qq.com/s?");
                             } else if (clipStr.startsWith("https://twitter.com")) {
                                 XposedBridge.log("Catch share link!");
                                 ClipData tmpData = ClipData.newPlainText("", clipStr.split("\\?")[0]);
                                 param.args[0] = tmpData;
+                            } else if (clipStr.startsWith("https://post.mp.qq.com") && clipStr.contains("?")) {
+                                XposedBridge.log("Catch QQ article long share link!");
+                                param.args[0] = cutArticle(clipStr, mp_qq_share_arguments, clipStr.split("\\?")[0] + "?");
                             }
                         } else if (clipStr.startsWith("{") && clipStr.endsWith("}") &&
                                 clipStr.contains("com.tencent.structmsg")) {

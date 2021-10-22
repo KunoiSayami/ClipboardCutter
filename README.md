@@ -8,7 +8,9 @@ Support app:
 
 * Twitter
 * Wechat (long share link article)
-* QQ (bilibili share link)
+* QQ (mini program link and article share)
+
+_Note: article link extract need [QNotified](https://github.com/ferredoxin/QNotified) to work correctly_
 
 ## License
 
