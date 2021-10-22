@@ -51,14 +51,13 @@ public class xposedInit implements IXposedHookLoadPackage {
                                 param.args[0] = tmpData;
                             }
                         } else if (clipStr.startsWith("{") && clipStr.endsWith("}") &&
-                                clipStr.contains("com.tencent.structmsg") &&
-                                clipStr.contains("b23.tv")) {
+                                clipStr.contains("com.tencent.structmsg")) {
                             String extract_url = clipStr.split("jumpUrl\":\"")[1];
                             extract_url = extract_url
                                     .split(extract_url.contains("?") ? "\\?" : "\"")[0]
                                     .replace("\\", "")
                                     .replace(".tv/", ".wtf/");
-                            XposedBridge.log("Extract bilibili video link: " + extract_url);
+                            XposedBridge.log("Extract tcb link: " + extract_url);
                             param.args[0] = ClipData.newPlainText("", extract_url);
                         }
                     }
